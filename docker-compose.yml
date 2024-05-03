@@ -1,0 +1,18 @@
+services:
+  abiotic-server:
+    image: abiotic:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    volumes:
+      - "./data:/server/AbioticFactor/Saved"
+    environment:
+      - MaxServerPlayers=6
+      - Port=7777
+      - QueryPort=27015
+      - ServerPassword=password
+      - SteamServerName=LinuxServer
+    ports:
+      - "0.0.0.0:7777:7777/udp"
+      - "0.0.0.0:27015:27015/udp"
