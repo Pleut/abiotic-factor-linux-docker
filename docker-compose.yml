@@ -12,7 +12,11 @@ services:
       - Port=7777
       - QueryPort=27015
       - ServerPassword=password
-      - SteamServerName=LinuxServer
+      - SteamServerName=Linux Server
+      - UsePerfThreads=true
+      - NoAsyncLoadingThread=true
+      - WorldSaveName=Cascade
+#     - AdditionalArgs=-SandboxIniPath=Config/WindowsServer/Server1Sandbox.ini
     ports:
       - "0.0.0.0:7777:7777/udp"
       - "0.0.0.0:27015:27015/udp"

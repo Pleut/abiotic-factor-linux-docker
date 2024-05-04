@@ -10,3 +10,9 @@ The container uses Wine to run the server under Linux.
 Setup and start via docker-compose with `docker-compose up -d --build`.
 
 In the docker-compose.yml config file, the environment variables `ServerPassword` and `SteamServerName` should be adjusted.
+
+## Configuration
+An example configuration for docker-compose can be found in the `docker-compose.yml` file.
+In addition to the default settings, which can be set via the environment variables, further arguments can be specified via the `AdditionalArgs` environment variable.
+
+Possible launch parameters and further information on the dedicated servers for Abiotic Factor can be found [here](https://github.com/DFJacob/AbioticFactorDedicatedServer/wiki/Technical-%E2%80%90-Launch-Parameters).
