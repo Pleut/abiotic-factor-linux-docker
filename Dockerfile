@@ -1,27 +1,22 @@
 FROM ubuntu:22.04
 
 RUN dpkg --add-architecture i386 && \
+    echo steam steam/question select "I AGREE" | debconf-set-selections && \
+    echo steam steam/license note '' | debconf-set-selections && \
     apt-get update && \
-    apt-get install -y wine64 wine32 wget && \
-    apt install -y --reinstall winbind && \
-    apt-get clean && \
+    apt-get install -y wine64 steamcmd && \
+    apt-get install -y --reinstall winbind && \
+    apt-get clean autoclean && \
+    apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /steamcmd && \
-    cd /steamcmd && \
-    wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz && \
-    tar -xvzf steamcmd_linux.tar.gz && \
-    rm steamcmd_linux.tar.gz
-
-RUN apt-get remove --purge -y wget \
-        && apt-get clean autoclean \
-        && apt-get autoremove -y
+ENV PATH="$PATH:/usr/games"
 
 WORKDIR /steamcmd
 
 RUN set -x \
         && mkdir -p "/server" \
-        && bash "/steamcmd/steamcmd.sh" \
+        && steamcmd \
                 +@sSteamCmdForcePlatformType windows \
                 +force_install_dir /server \
                 +login anonymous \
