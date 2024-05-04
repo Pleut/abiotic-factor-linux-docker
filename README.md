@@ -6,10 +6,15 @@
 For operating a dedicated server in Docker in order to use it under Linux.
 The container uses Wine to run the server under Linux. 
 
-## Usage
+## Setup
 Setup and start via docker-compose with `docker-compose up -d --build`.
 
 In the docker-compose.yml config file, the environment variables `ServerPassword` and `SteamServerName` should be adjusted.
+
+## Update
+There are two ways to update the game server:
+1. By setting the `AutoUpdate` environment variable to `true`. This checks for updates every time the container is started.
+2. By rebuilding the Docker image.
 
 ## Configuration
 An example configuration for docker-compose can be found in the `docker-compose.yml` file.
