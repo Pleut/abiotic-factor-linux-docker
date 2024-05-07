@@ -1,11 +1,9 @@
 services:
   abiotic-server:
-    image: abiotic:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: "ghcr.io/Pleut/abiotic-factor-linux-docker:latest"
     restart: unless-stopped
     volumes:
+      - "./gamefiles:/server"
       - "./data:/server/AbioticFactor/Saved"
     environment:
       - MaxServerPlayers=6
